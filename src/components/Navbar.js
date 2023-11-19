@@ -39,7 +39,7 @@ const Navbar = () => {
         <>
             <div id='nav' className='p-2'>
                 <div className="logo-div">
-                    <Link className='cursor-pointer' href={'/'}><Image src='/logo.png' alt='img' height={250} width={150} /></Link>
+                    <Link onClick={togglebar} className='cursor-pointer' href={'/'}><Image src='/logo.png' alt='img' height={250} width={150} /></Link>
                 </div>
                 <div ref={ref} className=" navList displaynone">
                     <ul>
@@ -88,7 +88,7 @@ const Navbar = () => {
                             <FaCircleMinus /><span>1</span><FaCirclePlus />
                         </div>
                     </div>
-                    <div className="cartlist">
+                    {/* <div className="cartlist">
                         <div className="cartimg">
                             <Image width={200} height={200} src='/tshirts.jpg' alt='tshirt' />
                         </div>
@@ -178,7 +178,7 @@ const Navbar = () => {
                         <div className="cartstate">
                             <FaCircleMinus /><span>1</span><FaCirclePlus />
                         </div>
-                    </div>
+                    </div> */}
             {/* the last list is about cart buttons like checkout  */}
                     <div className="cartbtn">
                         <div className="carttotal">
