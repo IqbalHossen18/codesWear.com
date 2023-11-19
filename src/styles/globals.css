@@ -1,3 +1,211 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+ /* Navbar start from here  */
+#nav{
+    min-height:60px;
+    width:100%;
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: pink;
+}
+
+.navList ul{
+    margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction:column;
+}
+.navList ul li{
+    padding:5px 10px;
+    border-radius: 5px;
+    font-size:15px;
+    font-weight:700;
+}
+.navList ul li:hover{
+    color:rgb(255, 145, 0);
+}
+
+
+.menubar{
+    position: absolute;
+    top:12;
+    right: 8px;
+    color:rgb(255, 0, 208);
+    padding:5px;
+    background-color: white;
+    border:2px solid black;
+    border-radius: 3px;
+
+}
+.navList{
+    margin-top: 20px;
+    z-index: 5;
+    background-color:pink;
+    width: 100%;
+    left: 0;
+}
+
+@media screen and (min-width:700px) {
+    #nav{
+        display:flex;
+        align-items: center;
+        flex-direction:row;
+    }
+    .navList ul {
+        display:flex;
+        align-items: center;
+        flex-direction:row;
+    }
+    .menubar{
+        display: none;
+    }
+    .navList{
+        margin-top: 0px;
+    }
+   
+ }
+@media screen and ( max-width:700px){
+    .displaynone{
+        display: none;
+    }
+    .displayvisible{
+        display: block;
+    }
+}
+  /* cart bar css is here  */
+  .cartbar{
+    background-color: rgb(253, 218, 224);
+    position:fixed;
+    /* top:-110vh; */
+    right: 0;
+    max-width:500px;
+    min-width: 310px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+    z-index: 5;
+    justify-content: center;
+  }
+
+  .cartopen{
+    position: absolute;
+    top:112vh;
+    right: 10px;
+    z-index: 10;
+    font-size: 25px;
+    color:rgb(255, 0, 195);
+  }
+  .cartclose{
+    position: absolute;
+    top:16px;
+    font-size: 28px;
+    right:15px;
+  }
+  .carthead{
+    flex:0.3;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .carthead h2{
+    color:rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+  .cartitem{
+    overflow:scroll;
+    flex:3;
+    min-height: 70vh;
+  }
+  .cartitem .cartlist{
+    display: flex;
+    flex-direction: row;
+    margin:5px 0px;
+    align-items: center;
+  }
+  .cartimg{
+    flex:0.5;
+    padding-left: 15px;
+  }
+  .cartimg img{
+    width: 40px;
+    border-radius: 10px;
+    height:90px;
+  }
+  .carttext{
+    flex:3;
+    padding:0px 5px;
+  }
+  .carttext span{
+    word-wrap: break-word;
+    font-weight:500;
+    font-size: 20px;
+  }
+  .cartstate{
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding:0px 5px;
+  }
+  .cartstate span{
+    padding:0px 10px;
+  }
+  .cartbtn{
+    flex:0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .cartbtn button{
+    padding:5px 15px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+ /* tshirts start from here  */
+
+.tshirt-box:hover{
+    box-shadow: 5px 5px 15px rgb(211, 210, 210);
+}
+.tshirt-box a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.tshirtsphoto{
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width:60%;
+}
+
+@media screen and (max-width:770px) {
+    .tshirt-box{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .tshirt-box .mt-4{
+        text-align: center;
+    }
+    .tshirtsphoto{
+        margin-right:15px;
+        width:100%;
+        min-width: 190px;
+    }
+ }
+
