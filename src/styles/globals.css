@@ -22,8 +22,7 @@
     flex-direction:column;
 }
 .navList ul li{
-    padding:5px 10px;
-    border-radius: 5px;
+    padding:5px 15px;
     font-size:15px;
     font-weight:700;
 }
@@ -34,7 +33,7 @@
 
 .menubar{
     position: absolute;
-    top:12;
+    top:12px;
     right: 8px;
     color:rgb(255, 0, 208);
     padding:5px;
@@ -80,26 +79,22 @@
 }
   /* cart bar css is here  */
   .cartbar{
+    overflow:scroll;
     background-color: rgb(253, 218, 224);
     position:fixed;
-    /* top:-110vh; */
     right: 0;
     max-width:500px;
     min-width: 310px;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    padding:10px;
+    padding:20px 10px;
     z-index: 5;
-    justify-content: center;
   }
 
   .cartopen{
-    position: absolute;
-    top:112vh;
-    right: 10px;
     z-index: 10;
-    font-size: 25px;
+    font-size: 20px;
     color:rgb(255, 0, 195);
   }
   .cartclose{
@@ -109,7 +104,6 @@
     right:15px;
   }
   .carthead{
-    flex:0.3;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -120,25 +114,20 @@
     font-size: 25px;
   }
 
-  .cartitem{
-    overflow:scroll;
-    flex:3;
-    min-height: 70vh;
-  }
   .cartitem .cartlist{
     display: flex;
     flex-direction: row;
-    margin:5px 0px;
+    margin:35px 0px;
     align-items: center;
   }
   .cartimg{
-    flex:0.5;
+    /* flex:1; */
     padding-left: 15px;
   }
   .cartimg img{
-    width: 40px;
+    width: 65px;
     border-radius: 10px;
-    height:90px;
+    height:95px;
   }
   .carttext{
     flex:3;
@@ -151,6 +140,8 @@
   }
   .cartstate{
     flex:1;
+    cursor: pointer;
+    color:rgb(255, 0, 166);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -158,14 +149,26 @@
   }
   .cartstate span{
     padding:0px 10px;
+    color:black;
+
   }
   .cartbtn{
-    flex:0.5;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    padding-left: 15px;
+  }
+  .cartbtn .carttotal span{
+    color:black;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing:-1px;
+  }
+  .cartbar .btns{
+    display: flex;
+    flex-direction: row;
   }
   .cartbtn button{
+    margin-top: 15px;
     padding:5px 15px;
     border-radius: 5px;
     display: flex;
