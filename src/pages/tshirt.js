@@ -13,7 +13,7 @@ const Tshirt  = () => {
         </a>
         <div className="mt-4">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Tshirts</h3>
-          <h2 className="text-gray-900 title-font text-lg font-medium">were the code</h2>
+          <h2 className="text-gray-900 title-font text-lg font-medium">wear the code</h2>
           <p className="mt-1">BDT 399</p>
           <p>size: sm , md, x , xl</p>
         </div>
@@ -24,7 +24,7 @@ const Tshirt  = () => {
         </a>
         <div className="mt-4">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Tshirts</h3>
-          <h2 className="text-gray-900 title-font text-lg font-medium">were the code</h2>
+          <h2 className="text-gray-900 title-font text-lg font-medium">wear the code</h2>
           <p className="mt-1">BDT 399</p>
           <p>size: sm , md, x , xl</p>
         </div>
@@ -35,7 +35,7 @@ const Tshirt  = () => {
         </a>
         <div className="mt-4">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Tshirts</h3>
-          <h2 className="text-gray-900 title-font text-lg font-medium">were the code</h2>
+          <h2 className="text-gray-900 title-font text-lg font-medium">wear the code</h2>
           <p className="mt-1">BDT 399</p>
           <p>size: sm , md, x , xl</p>
         </div>
@@ -46,7 +46,7 @@ const Tshirt  = () => {
         </a>
         <div className="mt-4">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Tshirts</h3>
-          <h2 className="text-gray-900 title-font text-lg font-medium">were the code</h2>
+          <h2 className="text-gray-900 title-font text-lg font-medium">wear the code</h2>
           <p className="mt-1">BDT 399</p>
           <p>size: sm , md, x , xl</p>
         </div>
@@ -57,7 +57,7 @@ const Tshirt  = () => {
         </a>
         <div className="mt-4">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Tshirts</h3>
-          <h2 className="text-gray-900 title-font text-lg font-medium">were the code</h2>
+          <h2 className="text-gray-900 title-font text-lg font-medium">wear the code</h2>
           <p className="mt-1">BDT 399</p>
           <p>size: sm , md, x , xl</p>
         </div>
@@ -68,7 +68,7 @@ const Tshirt  = () => {
         </a>
         <div className="mt-4">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Tshirts</h3>
-          <h2 className="text-gray-900 title-font text-lg font-medium">were the code</h2>
+          <h2 className="text-gray-900 title-font text-lg font-medium">wear the code</h2>
           <p className="mt-1">BDT 399</p>
           <p>size: sm , md, x , xl</p>
         </div>
@@ -79,7 +79,7 @@ const Tshirt  = () => {
         </a>
         <div className="mt-4">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Tshirts</h3>
-          <h2 className="text-gray-900 title-font text-lg font-medium">were the code</h2>
+          <h2 className="text-gray-900 title-font text-lg font-medium">wear the code</h2>
           <p className="mt-1">BDT 399</p>
           <p>size: sm , md, x , xl</p>
         </div>
@@ -90,7 +90,7 @@ const Tshirt  = () => {
         </a>
         <div className="mt-4">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Tshirts</h3>
-          <h2 className="text-gray-900 title-font text-lg font-medium">were the code</h2>
+          <h2 className="text-gray-900 title-font text-lg font-medium">wear the code</h2>
           <p className="mt-1">BDT 399</p>
           <p>size: sm , md, x , xl</p>
         </div>
