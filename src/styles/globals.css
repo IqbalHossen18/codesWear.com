@@ -83,14 +83,19 @@
     background-color: rgb(253, 218, 224);
     position:fixed;
     right: 0;
-    max-width:500px;
-    min-width: 310px;
+    width:500px;
+    /* min-width: 310px; */
     height: 100vh;
     display: flex;
     flex-direction: column;
     padding:20px 10px;
     z-index: 5;
   }
+  @media screen and ( max-width:700px){
+    .cartbar{
+      width: 310px;
+    }
+}
 
   .cartopen{
     z-index: 10;
@@ -131,7 +136,7 @@
   }
   .carttext{
     flex:3;
-    padding:0px 5px;
+    padding:0px 5px 0px 15px;
   }
   .carttext span{
     word-wrap: break-word;
@@ -219,3 +224,17 @@
   width: 100%;
   height: 450px;
  }
+.cartindex{
+  position: relative;
+  background-color: red;
+  min-width: 12px;
+  right: 2px;
+  bottom:5px;
+  height: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 8px;
+  color:white;
+}

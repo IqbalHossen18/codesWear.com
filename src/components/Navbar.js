@@ -6,7 +6,8 @@ import { FaShoppingCart, FaWindowClose, FaBars } from "react-icons/fa";
 import { FaCirclePlus, FaCircleMinus } from "react-icons/fa6";
 import { IoBagCheckOutline } from "react-icons/io5";
 
-const Navbar = () => {
+const Navbar = (props) => {
+    const {addToCart , clearCart , removecartItem , cart, subtotal} = props;
     let pathname = usePathname()
     const [menuonoff, setmenuonoff] = useState(true)
     const ref = useRef()
@@ -34,7 +35,7 @@ const Navbar = () => {
             cartClassList.add('top-[-110vh]');
         }
     };
-
+    const totalQuantity = Object.values(cart).reduce((total, item) => total + item.qty, 0);
     return (
         <>
             <div id='nav' className='p-2'>
@@ -59,7 +60,15 @@ const Navbar = () => {
                         <Link onClick={togglebar} className='cursor-pointer' href={'/about'}><li className={pathname === '/about' ? 'active' : ''}>About</li></Link>
                         <Link onClick={togglebar} className='cursor-pointer' href={'/contact'}><li className={pathname === '/contact' ? 'active' : ''}>Contact</li></Link>
                         <Link onClick={togglebar} className='cursor-pointer' href={'/order'}><li className={pathname === '/order' ? 'active' : ''}>Order</li></Link>
-                        <li>  <FaShoppingCart onClick={toggleCartBar} className='cartopen' /></li>
+                        <li>                            
+                             <div className="flex flex-row" >
+                                <FaShoppingCart onClick={toggleCartBar} className='cartopen' />
+                                <span className="cartindex">
+                                    {totalQuantity}
+                                </span>
+                            </div>
+                        </li>
+
                     </ul>
                 </div>
                 <div onClick={togglebar} className='menubar'>
@@ -75,118 +84,31 @@ const Navbar = () => {
                     </label>
                 </div>
                 <div className="cartitem">
-                    <div className="cartlist">
+                    {Object.keys(cart).length === 0 && <p className='py-3 text-center'>Your cart is Empty!</p>}
+                    { Object.keys(cart).map((k)=>{
+                        return <div className="cartlist" key={k}>
                         <div className="cartimg">
                             <Image width={200} height={200} src='/tshirts.jpg' alt='tshirt' />
                         </div>
                         <div className="carttext">
                             <span>
-                                Wings Of Freedom Attack On Titan Tshirt (XL/Bottlegreen)
+                                {cart[k].Name}
                             </span>
+                            <p className='text-slate-600'>Size : {cart[k].size}</p>
                         </div>
                         <div className="cartstate">
-                            <FaCircleMinus /><span>1</span><FaCirclePlus />
+                            <FaCircleMinus onClick={()=>{removecartItem(k, 1 , cart[k].price,  cart[k].Name , cart[k].size , cart[k].varient) }} /><span>{cart[k].qty}</span><FaCirclePlus onClick={()=>{addToCart(k, 1 , cart[k].price,  cart[k].Name , cart[k].size , cart[k].varient) }} />
                         </div>
                     </div>
-                    {/* <div className="cartlist">
-                        <div className="cartimg">
-                            <Image width={200} height={200} src='/tshirts.jpg' alt='tshirt' />
-                        </div>
-                        <div className="carttext">
-                            <span>
-                                Wings  (XL/Bottlegreen)
-                            </span>
-                        </div>
-                        <div className="cartstate">
-                            <FaCircleMinus /><span>1</span><FaCirclePlus />
-                        </div>
-                    </div>
-                    <div className="cartlist">
-                        <div className="cartimg">
-                            <Image width={200} height={200} src='/tshirts.jpg' alt='tshirt' />
-                        </div>
-                        <div className="carttext">
-                            <span>
-                                Wings Of Freedom Attack (XL/Bottlegreen)
-                            </span>
-                        </div>
-                        <div className="cartstate">
-                            <FaCircleMinus /><span>1</span><FaCirclePlus />
-                        </div>
-                    </div>
-                    <div className="cartlist">
-                        <div className="cartimg">
-                            <Image width={200} height={200} src='/tshirts.jpg' alt='tshirt' />
-                        </div>
-                        <div className="carttext">
-                            <span>
-                                Wings Of Freedom Attack (XL/Bottlegreen)
-                            </span>
-                        </div>
-                        <div className="cartstate">
-                            <FaCircleMinus /><span>1</span><FaCirclePlus />
-                        </div>
-                    </div>
-                    <div className="cartlist">
-                        <div className="cartimg">
-                            <Image width={200} height={200} src='/tshirts.jpg' alt='tshirt' />
-                        </div>
-                        <div className="carttext">
-                            <span>
-                                Wings Of Freedom Attack (XL/Bottlegreen)
-                            </span>
-                        </div>
-                        <div className="cartstate">
-                            <FaCircleMinus /><span>1</span><FaCirclePlus />
-                        </div>
-                    </div>
-                    <div className="cartlist">
-                        <div className="cartimg">
-                            <Image width={200} height={200} src='/tshirts.jpg' alt='tshirt' />
-                        </div>
-                        <div className="carttext">
-                            <span>
-                                Wings Of Freedom Attack (XL/Bottlegreen)
-                            </span>
-                        </div>
-                        <div className="cartstate">
-                            <FaCircleMinus /><span>1</span><FaCirclePlus />
-                        </div>
-                    </div>
-                    <div className="cartlist">
-                        <div className="cartimg">
-                            <Image width={200} height={200} src='/tshirts.jpg' alt='tshirt' />
-                        </div>
-                        <div className="carttext">
-                            <span>
-                                Wings Of Freedom Attack (XL/Bottlegreen)
-                            </span>
-                        </div>
-                        <div className="cartstate">
-                            <FaCircleMinus /><span>1</span><FaCirclePlus />
-                        </div>
-                    </div>
-                    <div className="cartlist">
-                        <div className="cartimg">
-                            <Image width={200} height={200} src='/tshirts.jpg' alt='tshirt' />
-                        </div>
-                        <div className="carttext">
-                            <span>
-                                Wings Of Freedom Attack (XL/Bottlegreen)
-                            </span>
-                        </div>
-                        <div className="cartstate">
-                            <FaCircleMinus /><span>1</span><FaCirclePlus />
-                        </div>
-                    </div> */}
-            {/* the last list is about cart buttons like checkout  */}
+                    })}
+                  
                     <div className="cartbtn">
                         <div className="carttotal">
-                            <span>Sub-total : 852 BDT</span>
+                            <span>Subtotal : {subtotal} BDT</span>
                         </div>
                         <div className='btns'>
                             <button className='bg-pink-500 mr-1 hover:bg-pink-600'><IoBagCheckOutline className='mr-1' /><span>Checkout</span></button>
-                            <button className='bg-pink-500 ml-1 hover:bg-pink-600'>Clear</button>
+                            <button onClick={clearCart} className='bg-pink-500 ml-1 hover:bg-pink-600'>Clear</button>
                         </div>
 
                     </div>
