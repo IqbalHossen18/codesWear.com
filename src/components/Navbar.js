@@ -2,16 +2,16 @@ import Image from 'next/image'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useRef, useState } from 'react';
-import { FaShoppingCart, FaWindowClose, FaBars } from "react-icons/fa";
+import { FaWindowClose, FaBars } from "react-icons/fa";
 import { FaCirclePlus, FaCircleMinus } from "react-icons/fa6";
-import { IoBagCheckOutline } from "react-icons/io5";
+import { IoBagCheckOutline , IoCartOutline  } from "react-icons/io5";
 
 const Navbar = (props) => {
-    const {addToCart , clearCart , removecartItem , cart, subtotal} = props;
+    const {addToCart , clearCart , toggleCartBar, cartref, removecartItem , cart, subtotal} = props;
     let pathname = usePathname()
     const [menuonoff, setmenuonoff] = useState(true)
     const ref = useRef()
-    const cartref = useRef()
+
     const togglebar = () => {
         setmenuonoff(!menuonoff)
         if (ref.current.classList.contains('displaynone')) {
@@ -23,22 +23,11 @@ const Navbar = (props) => {
             ref.current.classList.add('displaynone')
         }
     }
-    const toggleCartBar = () => {
-        const cartClassList = cartref.current.classList;
 
-        if (cartClassList.contains('top-[-110vh]')) {
-            cartClassList.remove('top-[-110vh]');
-            cartClassList.add('top-0');
-        } else {
-            // Remove the extra space in the class name
-            cartClassList.remove('top-0');
-            cartClassList.add('top-[-110vh]');
-        }
-    };
     const totalQuantity = Object.values(cart).reduce((total, item) => total + item.qty, 0);
     return (
         <>
-            <div id='nav' className='p-2'>
+            <div id='nav' className='p-2 sticky top-0 bg-white z-50 shadow-md'>
                 <div className="logo-div">
                     <Link onClick={togglebar} className='cursor-pointer' href={'/'}><Image src='/logo.png' alt='img' height={250} width={150} /></Link>
                 </div>
@@ -60,9 +49,11 @@ const Navbar = (props) => {
                         <Link onClick={togglebar} className='cursor-pointer' href={'/about'}><li className={pathname === '/about' ? 'active' : ''}>About</li></Link>
                         <Link onClick={togglebar} className='cursor-pointer' href={'/contact'}><li className={pathname === '/contact' ? 'active' : ''}>Contact</li></Link>
                         <Link onClick={togglebar} className='cursor-pointer' href={'/order'}><li className={pathname === '/order' ? 'active' : ''}>Order</li></Link>
+                        <Link onClick={togglebar} className='cursor-pointer' href={'/login'}><li className={pathname === '/login' ? 'active' : ''}>Login</li></Link>
+                        <Link onClick={togglebar} className='cursor-pointer' href={'/signup'}><li className={pathname === '/signup' ? 'active' : ''}>Signup</li></Link>
                         <li>                            
                              <div className="flex flex-row" >
-                                <FaShoppingCart onClick={toggleCartBar} className='cartopen' />
+                                <IoCartOutline  onClick={toggleCartBar} className='cartopen' />
                                 <span className="cartindex">
                                     {totalQuantity}
                                 </span>
@@ -107,8 +98,10 @@ const Navbar = (props) => {
                             <span>Subtotal : {subtotal} BDT</span>
                         </div>
                         <div className='btns'>
-                            <button className='bg-pink-500 mr-1 hover:bg-pink-600'><IoBagCheckOutline className='mr-1' /><span>Checkout</span></button>
-                            <button onClick={clearCart} className='bg-pink-500 ml-1 hover:bg-pink-600'>Clear</button>
+                            <Link href={'/checkout'} >
+                            <button disabled={Object.keys(cart).length === 0} onClick={toggleCartBar} className='bg-pink-500 mr-1 hover:bg-pink-600'><IoBagCheckOutline className='mr-1' /><span>Checkout</span></button>
+                            </Link>
+                            <button onClick={()=>{clearCart() ; toggleCartBar();}} className='bg-pink-500 ml-1 hover:bg-pink-600'>Clear</button>
                         </div>
 
                     </div>

@@ -11,14 +11,12 @@
     flex-direction:column;
     align-items: flex-start;
     justify-content: center;
-    background-color: pink;
 }
 
 .navList ul{
     margin-left: 15px;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
     flex-direction:column;
 }
 .navList ul li{
@@ -45,7 +43,6 @@
 .navList{
     margin-top: 20px;
     z-index: 5;
-    background-color:pink;
     width: 100%;
     left: 0;
 }
@@ -89,7 +86,7 @@
     display: flex;
     flex-direction: column;
     padding:20px 10px;
-    z-index: 5;
+    z-index: 102;
   }
   @media screen and ( max-width:700px){
     .cartbar{
@@ -98,14 +95,16 @@
 }
 
   .cartopen{
+    cursor: pointer;
     z-index: 10;
-    font-size: 20px;
-    color:rgb(255, 0, 195);
+    font-size: 23px;
+    color:rgb(0, 0, 0);
   }
   .cartclose{
     position: absolute;
     top:16px;
     font-size: 28px;
+    cursor: pointer;
     right:15px;
   }
   .carthead{
@@ -228,8 +227,8 @@
   position: relative;
   background-color: red;
   min-width: 12px;
-  right: 2px;
-  bottom:5px;
+  right: 4px;
+  bottom:4px;
   height: 12px;
   display: flex;
   justify-content: center;
