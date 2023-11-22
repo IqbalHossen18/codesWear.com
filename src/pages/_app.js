@@ -82,6 +82,10 @@ const toggleCartBar = () => {
               <Head>
                 <title>Codeswear.com - wear the code</title>
                 <meta name='description' content='codeswear.com is e-commarce platform for men , women and children.' />
+                <link rel="icon" href="/favicon.ico?v=1" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=1" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1" />
+
               </Head>
               <Navbar cart={cart} cartref={cartref} toggleCartBar={toggleCartBar} addToCart={addToCart} clearCart={clearCart} subtotal={subtotal} removecartItem={removecartItem} />
               <Component toggleCartBar={toggleCartBar} cart={cart} addToCart={addToCart} clearCart={clearCart} subtotal={subtotal} removecartItem={removecartItem} {...pageProps} />
