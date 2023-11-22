@@ -50,7 +50,7 @@ const Navbar = (props) => {
                         <Link onClick={togglebar} className='cursor-pointer' href={'/contact'}><li className={pathname === '/contact' ? 'active' : ''}>Contact</li></Link>
                         <Link onClick={togglebar} className='cursor-pointer' href={'/order'}><li className={pathname === '/order' ? 'active' : ''}>Order</li></Link>
                         <Link onClick={togglebar} className='cursor-pointer' href={'/login'}><li className={pathname === '/login' ? 'active' : ''}>Login</li></Link>
-                        <Link onClick={togglebar} className='cursor-pointer' href={'/signup'}><li className={pathname === '/signup' ? 'active' : ''}>Signup</li></Link>
+                      
                         <li>                            
                              <div className="flex flex-row" >
                                 <IoCartOutline  onClick={toggleCartBar} className='cartopen' />

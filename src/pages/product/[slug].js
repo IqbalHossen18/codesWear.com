@@ -95,13 +95,13 @@ const Slug = ({addToCart , toggleCartBar}) => {
                   </div>
                 </div>
                 <div className="flex align-middle">
-                  <span className="title-font font-medium text-2xl text-gray-900">499 BDT</span>
-                  <button className="flex ml-4 text-white bg-pink-500 border-0 py-2 px-2  md:px-2 focus:outline-none hover:bg-pink-600 rounded">Buy now</button>
+                  <span className="title-font font-medium text-md md:text-2xl text-gray-900">499 BDT</span>
+                  <button className="flex ml-4 text-white bg-pink-500 border-0 py-2 px-2  md:px-6 focus:outline-none hover:bg-pink-600 rounded">Buy now</button>
                   <button onClick={()=>{addToCart(slug , 1 , 499 , 'Wear the code' , 'xl' , 'Red') ; toggleCartBar()}} className="flex  text-white bg-pink-500 border-0 py-2 px-2 ml-3 md:px-2 focus:outline-none hover:bg-pink-600 rounded">Add to Cart</button>
                 </div>
                 <div className="flex mt-3">
-                     <input onChange={onchange} className=" bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3  transition-colors duration-200 ease-in-out" type='text' placeholder='Enter your pincode' />
-                     <button onClick={checkpin} className="flex ml-4 text-white bg-red-300 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-red-400 rounded">
+                     <input onChange={onchange} className=" bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 w-[160px] transition-colors duration-200 ease-in-out" type='text' placeholder='Enter your pincode' />
+                     <button onClick={checkpin} className="flex ml-2 text-sm text-white bg-red-300 border-0 py-2 px-2 md:px-6 focus:outline-none hover:bg-red-400 rounded">
                      Check Pin
                      </button>
                 </div>
