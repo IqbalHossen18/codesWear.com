@@ -5,7 +5,6 @@ import React, { useState } from 'react'
 import Product from '../../../models/Product';
 
 const Slug = ({addToCart , toggleCartBar , varients, product}) => {
-  // console.log(varients, product)
   const router = useRouter()
   const { slug } = router.query;
   const [service, setservice] = useState()
@@ -29,8 +28,6 @@ const Slug = ({addToCart , toggleCartBar , varients, product}) => {
   const [color, setcolor] = useState(product.color);
   const [size, setsize] = useState(product.size);
   const refreshpage=(newcolor , newsize)=>{
-    console.log(varients, newcolor , newsize)
-    console.log(varients[newcolor][newsize]['slug'])
     let url = `http://localhost:3000/product/${varients[newcolor][newsize]['slug']}`;
     window.location = url;
   }
@@ -145,14 +142,12 @@ const Slug = ({addToCart , toggleCartBar , varients, product}) => {
 }
 
 export async function getServerSideProps(context){
-    // console.log(context.query.slug)
     if(!mongoose.connections[0].readyState){
           mongoose.connect(process.env.MONGO_URI)
     }
      let product = await Product.findOne({slug: context.query.slug})
      let colorsizeslug = {};
      let varients = await Product.find({title:product.title})
-    //  console.log(varients)
        for(let item of varients){
          if(Object.keys(colorsizeslug).includes(item.color)){
            colorsizeslug[item.color][item.size] = {slug:item.slug}
@@ -162,7 +157,6 @@ export async function getServerSideProps(context){
           colorsizeslug[item.color][item.size] = {slug:item.slug}
          }
        }
-       console.log(JSON.parse(JSON.stringify(colorsizeslug)))
   return {
     props:{product:JSON.parse(JSON.stringify(product)), varients:JSON.parse(JSON.stringify(colorsizeslug))}
   }

@@ -3,7 +3,6 @@ import connectToMongo from '../../../middleware/mongoose';
 
 const handler = async(req , res) =>{
     if(req.method === 'POST'){
-        console.log(req.body)
         for(let i = 0; i<req.body.length ; i++){
             let add = new Product({
                 title: req.body[i].title,
