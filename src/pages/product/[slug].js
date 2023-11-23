@@ -1,8 +1,11 @@
+import mongoose from 'mongoose';
 import Image from 'next/image';
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
+import Product from '../../../models/Product';
 
-const Slug = ({addToCart , toggleCartBar}) => {
+const Slug = ({addToCart , toggleCartBar , varients, product}) => {
+  // console.log(varients, product)
   const router = useRouter()
   const { slug } = router.query;
   const [service, setservice] = useState()
@@ -22,6 +25,14 @@ const Slug = ({addToCart , toggleCartBar}) => {
 
   const onchange=(e)=>{
       setpin(e.target.value)
+  }
+  const [color, setcolor] = useState(product.color);
+  const [size, setsize] = useState(product.size);
+  const refreshpage=(newcolor , newsize)=>{
+    console.log(varients, newcolor , newsize)
+    console.log(varients[newcolor][newsize]['slug'])
+    let url = `http://localhost:3000/product/${varients[newcolor][newsize]['slug']}`;
+    window.location = url;
   }
   return (
     <>
@@ -73,18 +84,33 @@ const Slug = ({addToCart , toggleCartBar}) => {
                 <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                   <div className="flex">
                     <span className="mr-3">Color</span>
-                    <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
-                    <button className="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-                    <button className="border-2 border-gray-300 ml-1 bg-pink-500 rounded-full w-6 h-6 focus:outline-none"></button>
+                    {Object.keys(varients).includes('white') && Object.keys(varients['white']).includes(size) &&  <button onClick={()=>{ refreshpage('white', size)}} className={`border-2 bg-white rounded-full w-6 h-6 focus:outline-none ${color === "white" ? 'border-black':''} `}></button>}
+
+                    {Object.keys(varients).includes('gray') && Object.keys(varients['gray']).includes(size) &&  <button onClick={()=>{ refreshpage('gray', size)}} className={`border-2 bg-gray-600 rounded-full w-6 h-6 focus:outline-none ${color === "gray" ? 'border-black':''} `}></button>}
+
+                    {Object.keys(varients).includes('blue') && Object.keys(varients['blue']).includes(size) &&  <button onClick={()=>{ refreshpage('blue', size)}} className={`border-2 bg-blue-600 rounded-full w-6 h-6 focus:outline-none ${color === "blue" ? 'border-black':''} `}></button>}
+
+                    {Object.keys(varients).includes('yellow') && Object.keys(varients['yellow']).includes(size) &&  <button onClick={()=>{ refreshpage('yellow', size)}} className={`border-2 bg-yellow-600 rounded-full w-6 h-6 focus:outline-none ${color === "yellow" ? 'border-black':''} `}></button>}
+
+                    {Object.keys(varients).includes('purple') && Object.keys(varients['purple']).includes(size) &&  <button onClick={()=>{ refreshpage('purple', size)}} className={`border-2 bg-purple-600 rounded-full w-6 h-6 focus:outline-none ${color === "purple" ? 'border-black':''} `}></button>}
+
+                    {Object.keys(varients).includes('red') && Object.keys(varients['red']).includes(size) &&  <button onClick={()=>{ refreshpage('red', size)}} className={`border-2 bg-red-600 rounded-full w-6 h-6 focus:outline-none ${color === "red" ? 'border-black':''} `}></button>}
+
+                    {Object.keys(varients).includes('black') && Object.keys(varients['black']).includes(size) &&  <button onClick={()=>{ refreshpage('black', size)}} className={`border-2 bg-black rounded-full w-6 h-6 focus:outline-none ${color === "black" ? 'border-white':''} `}></button>}
+
+                    {Object.keys(varients).includes('green') && Object.keys(varients['green']).includes(size) &&  <button onClick={()=>{ refreshpage('green', size)}} className={`border-2 bg-green-600 rounded-full w-6 h-6 focus:outline-none ${color === "green" ? 'border-black':''} `}></button>}
+
+                    {/* <button className="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
+                    <button className="border-2 border-gray-300 ml-1 bg-pink-500 rounded-full w-6 h-6 focus:outline-none"></button> */}
                   </div>
                   <div className="flex ml-6 items-center">
                     <span className="mr-3">Size</span>
                     <div className="relative">
-                      <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-pink-200 focus:border-pink-500 text-base pl-3 pr-10">
-                        <option>SM</option>
-                        <option>M</option>
-                        <option>L</option>
-                        <option>XL</option>
+                      <select value={size} onChange={(e)=>{refreshpage(color , e.target.value)}} className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-pink-200 focus:border-pink-500 text-base pl-3 pr-10">
+                        {Object.keys(varients[color]).includes('sm') && <option value={'sm'}>SM</option>}
+                        {Object.keys(varients[color]).includes('md') && <option value={'md'}>MD</option>}
+                        {Object.keys(varients[color]).includes('xl') && <option value={'xl'}>XL</option>}
+                        {Object.keys(varients[color]).includes('xxl') && <option value={'xxl'}>XXL</option>}
                       </select>
                       <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                         <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
@@ -116,6 +142,30 @@ const Slug = ({addToCart , toggleCartBar}) => {
       </section>
     </>
   )
+}
+
+export async function getServerSideProps(context){
+    // console.log(context.query.slug)
+    if(!mongoose.connections[0].readyState){
+          mongoose.connect(process.env.MONGO_URI)
+    }
+     let product = await Product.findOne({slug: context.query.slug})
+     let colorsizeslug = {};
+     let varients = await Product.find({title:product.title})
+    //  console.log(varients)
+       for(let item of varients){
+         if(Object.keys(colorsizeslug).includes(item.color)){
+           colorsizeslug[item.color][item.size] = {slug:item.slug}
+         }
+         else{
+          colorsizeslug[item.color] = {};
+          colorsizeslug[item.color][item.size] = {slug:item.slug}
+         }
+       }
+       console.log(JSON.parse(JSON.stringify(colorsizeslug)))
+  return {
+    props:{product:JSON.parse(JSON.stringify(product)), varients:JSON.parse(JSON.stringify(colorsizeslug))}
+  }
 }
 
 export default Slug
