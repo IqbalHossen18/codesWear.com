@@ -58,7 +58,7 @@ export async function getServerSideProps(context) {
    if(!mongoose.connections[0].readyState){
       await mongoose.connect(process.env.MONGO_URI)
    }
-   let products = await Product.find()
+   let products = await Product.find({category:`Men's Tshirts`})
    let tshirts = {}
     for(let item of products){
       if(item.title in tshirts){

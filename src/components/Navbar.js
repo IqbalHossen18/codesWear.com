@@ -78,13 +78,13 @@ const Navbar = (props) => {
                     { Object.keys(cart).map((k)=>{
                         return <div className="cartlist" key={k}>
                         <div className="cartimg">
-                            <Image width={200} height={200} src='/tshirts.jpg' alt='tshirt' />
+                            <Image width={200} height={200} src={cart[k].img} alt='tshirt' />
                         </div>
                         <div className="carttext">
                             <span className='text-black font-bold'>
                             {cart[k].Name}
                             </span>
-                            <p className='text-black text-sm'>{`${cart[k].size.toUpperCase()}/${cart[k].varient.toUpperCase()}`}</p>
+                            <p className='text-black text-sm font-bold'>{`${cart[k].size.toUpperCase()}/${cart[k].varient.toUpperCase()}`}</p>
                         </div>
                         <div className="cartstate">
                             <FaCircleMinus onClick={()=>{removecartItem(k, 1 , cart[k].price,  cart[k].Name , cart[k].size , cart[k].varient) }} /><span>{cart[k].qty}</span><FaCirclePlus onClick={()=>{addToCart(k, 1 , cart[k].price,  cart[k].Name , cart[k].size , cart[k].varient) }} />

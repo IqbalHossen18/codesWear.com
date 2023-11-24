@@ -61,7 +61,7 @@ const Checkout = ({cart , subtotal , removecartItem, addToCart}) => {
                     { Object.keys(cart).map((k)=>{
                         return <div className="cartlist" key={k}>
                         <div className="cartimg">
-                            <Image width={200} height={200} src='/tshirts.jpg' alt='tshirt' />
+                            <Image width={200} height={200} src={cart[k].img} alt='tshirt' />
                         </div>
                         <div className="carttext">
                             <span>

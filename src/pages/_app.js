@@ -35,13 +35,13 @@ export default function App({ Component, pageProps }) {
       setsubtotal(subt)
    }
 
-   const addToCart =( itemCode , qty , price , Name , size , varient)=>{
+   const addToCart =( itemCode , qty , price , Name , size , varient , img)=>{
        let newcart = cart;
        if(itemCode in cart){
          newcart[itemCode].qty = cart[itemCode].qty + qty;
        }
        else{
-        newcart[itemCode] = {qty:1 , price , Name , size , varient}
+        newcart[itemCode] = {qty:1 , price , Name , size , varient , img}
        }
 
        setcart(newcart)
@@ -52,7 +52,7 @@ export default function App({ Component, pageProps }) {
     savecart({})
    }
 
-   const removecartItem =( itemCode , qty , price , Name , size , varient)=>{
+   const removecartItem =( itemCode , qty , price , Name , size , varient , img)=>{
     let newcart = JSON.parse(JSON.stringify(cart))
     if(itemCode in cart){
       newcart[itemCode].qty = newcart[itemCode].qty - qty
@@ -79,8 +79,8 @@ const toggleCartBar = () => {
   }
 };
 
-const buyNow = (itemCode, qty , price , Name , size , varient) =>{
-  let newcart = {itemCode: { qty:1 , price , Name , size , varient}}
+const buyNow = (itemCode, qty , price , Name , size , varient , img) =>{
+  let newcart = {itemCode: { qty:1 , price , Name , size , varient, img}}
   setcart(newcart)
   savecart(newcart)
   router.push('/checkout')

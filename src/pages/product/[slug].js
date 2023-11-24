@@ -36,8 +36,8 @@ const Slug = ({addToCart , toggleCartBar , varients, product , buyNow}) => {
     <>
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-24 mx-auto">
-          <div className=" mx-auto flex flex-wrap">
-            <Image priority={true} style={{height:'450px', width:'450px'}} width={300} height={300} alt="ecommerce" className="lg:w-1/2 w-full  rounded" src="/hoodies.jpg"/>
+          <div className=" mx-auto justify-center flex flex-wrap">
+            <Image priority={true} style={{height:'450px', width:'450px'}} width={300} height={300} alt="ecommerce" className="lg:w-1/2 w-full  rounded" src={product.img}/>
               <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                 <h2 className="text-sm title-font text-gray-500 tracking-widest"> {product.category} </h2>
                 <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{`${product.title}(${product.size.toUpperCase()}/${product.color.toUpperCase()})`}</h1>
@@ -119,8 +119,8 @@ const Slug = ({addToCart , toggleCartBar , varients, product , buyNow}) => {
                 </div>
                 <div className="flex align-middle">
                   <span className="title-font font-medium text-md md:text-2xl text-gray-900"> BDT {product.price}</span>
-                  <button onClick={()=>{buyNow(slug , 1 , product.price , product.title ,size , color)}} className="flex ml-4 text-white bg-pink-500 border-0 py-2 px-2  md:px-6 focus:outline-none hover:bg-pink-600 rounded">Buy now</button>
-                  <button onClick={()=>{addToCart(slug , 1 , product.price , product.title , size , color) ; toggleCartBar()}} className="flex  text-white bg-pink-500 border-0 py-2 px-2 ml-3 md:px-2 focus:outline-none hover:bg-pink-600 rounded">Add to Cart</button>
+                  <button onClick={()=>{buyNow(slug , 1 , product.price , product.title ,size , color, product.img)}} className="flex ml-4 text-white bg-pink-500 border-0 py-2 px-2  md:px-6 focus:outline-none hover:bg-pink-600 rounded">Buy now</button>
+                  <button onClick={()=>{addToCart(slug , 1 , product.price , product.title , size , color , product.img) ; toggleCartBar()}} className="flex  text-white bg-pink-500 border-0 py-2 px-2 ml-3 md:px-2 focus:outline-none hover:bg-pink-600 rounded">Add to Cart</button>
                 </div>
                 <div className="flex mt-3">
                      <input onChange={onchange} className=" bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 w-[160px] transition-colors duration-200 ease-in-out" type='text' placeholder='Enter your pincode' />
