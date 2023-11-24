@@ -67,7 +67,7 @@ const Checkout = ({cart , subtotal , removecartItem, addToCart}) => {
                             <span>
                                 {cart[k].Name}
                             </span>
-                            <p className='text-slate-600'>Size : {cart[k].size}</p>
+                            <p className='text-black text-sm'>{`${cart[k].size.toUpperCase()}/${cart[k].varient.toUpperCase()}`}</p>
                         </div>
                         <div className="cartstate">
                             <FaCircleMinus onClick={()=>{removecartItem(k, 1 , cart[k].price,  cart[k].Name , cart[k].size , cart[k].varient) }} /><span>{cart[k].qty}</span><FaCirclePlus onClick={()=>{addToCart(k, 1 , cart[k].price,  cart[k].Name , cart[k].size , cart[k].varient) }} />
