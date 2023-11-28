@@ -31,7 +31,6 @@
 
 .menubar{
     position: absolute;
-    top:12px;
     right: 8px;
     color:rgb(255, 0, 208);
     padding:5px;
@@ -41,7 +40,6 @@
 
 }
 .navList{
-    margin-top: 20px;
     z-index: 5;
     width: 100%;
     left: 0;
@@ -71,6 +69,9 @@
         display: none;
     }
     .displayvisible{
+        position: absolute;
+        top:60px;
+        background-color: white;
         display: block;
     }
 }
@@ -237,3 +238,31 @@
   font-size: 8px;
   color:white;
 }
+
+ /* userinfo styles is here  */
+ .userinfo{
+  position: absolute;
+  cursor: pointer;
+  top:15px;
+  z-index: 20;
+  right: 50px;
+  justify-content: center;
+  align-items: center;
+ }
+ .user ul{
+  position: absolute;
+  top:30px;
+  right:10px;
+  border-radius: 10px;
+  padding: 10px 15px;
+  width: 150px;
+  background-color: #F104A8; 
+ }
+ .user ul li{
+  color:rgb(14, 13, 13);
+  font-weight: bold;  
+  cursor: pointer;
+ }
+ .user ul li:hover{
+  color:silver;
+ }

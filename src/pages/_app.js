@@ -11,8 +11,17 @@ export default function App({ Component, pageProps }) {
   const cartref = useRef()
    const [cart, setcart] = useState({})
    const [subtotal, setsubtotal] = useState(0)
+   const [user, setuser] = useState({value: null})
+   const [key, setkey] = useState(0)
 
    useEffect(() => {
+      const token = localStorage.getItem('token')
+      if(token){
+        setuser({value:token})
+  
+        setkey(Math.random())
+      }
+  
       try {
         if(localStorage.getItem('cart')){
           setcart(JSON.parse(localStorage.getItem('cart')))
@@ -22,9 +31,14 @@ export default function App({ Component, pageProps }) {
         console.error(error)
         localStorage.clear;
       }
-   }, [])
+   }, [router.query])
    
-
+   const handlelogout=()=>{
+      localStorage.removeItem('token')
+      setuser({value:null})
+      setkey(Math.random())
+      router.push('/login')
+   }
    const savecart = (mycart) =>{
       localStorage.setItem('cart', JSON.stringify(mycart))
       let subt = 0;
@@ -96,7 +110,7 @@ const buyNow = (itemCode, qty , price , Name , size , varient , img) =>{
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=1" />
 
               </Head>
-              <Navbar cart={cart} cartref={cartref} toggleCartBar={toggleCartBar} addToCart={addToCart} clearCart={clearCart} subtotal={subtotal} removecartItem={removecartItem} />
+              <Navbar key={key} user={user} handlelogout={handlelogout} cart={cart} cartref={cartref} toggleCartBar={toggleCartBar} addToCart={addToCart} clearCart={clearCart} subtotal={subtotal} removecartItem={removecartItem} />
               <Component buyNow={buyNow} toggleCartBar={toggleCartBar} cart={cart} addToCart={addToCart} clearCart={clearCart} subtotal={subtotal} removecartItem={removecartItem} {...pageProps} />
               <Footer/>
             </>

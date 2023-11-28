@@ -1,9 +1,16 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import { useRouter } from 'next/router';
+import React, { useEffect } from 'react'
 import { IoMdArrowBack } from "react-icons/io";
 
 const Forgot = () => {
+    const router = useRouter()
+    useEffect(() => {
+        if(localStorage.getItem('token')){
+          router.push('/')
+        }
+      }, [router])
     return (
         <>
             <section className="bg-gray-50 dark:bg-gray-900">

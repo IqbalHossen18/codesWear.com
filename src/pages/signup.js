@@ -1,12 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Singup = () => {
   let router = useRouter()
   const [credintials, setcredintials] = useState({name:'', email:'', password:''})
   const {name , email , password} = credintials;
+  useEffect(() => {
+      if(localStorage.getItem('token')){
+        router.push('/')
+      }
+    }, [router])
+
   const handleSubmit = async(e)=>{
     e.preventDefault()
       try {
@@ -32,10 +38,12 @@ const Singup = () => {
           body: JSON.stringify({name, email, password}),
         });
         const result = await response.json();
-        console.log({success:'success'})
+        // console.log(result.token)
+        if(result.success){
+          localStorage.setItem('token', result.token)
+        }
         setcredintials({name:'', email:'', password:''})
-        router.push('/login')
-        alert('Please , Login to get started')
+        router.push('/')
         }
       } catch (error) {
         console.error({error:'Internal Server Error'});

@@ -2,14 +2,15 @@ import Image from 'next/image'
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useRef, useState } from 'react';
-import { FaWindowClose, FaBars } from "react-icons/fa";
+import { FaWindowClose, FaBars , FaUserCircle } from "react-icons/fa";
 import { FaCirclePlus, FaCircleMinus } from "react-icons/fa6";
 import { IoBagCheckOutline , IoCartOutline  } from "react-icons/io5";
 
 const Navbar = (props) => {
-    const {addToCart , clearCart , toggleCartBar, cartref, removecartItem , cart, subtotal} = props;
+    const {addToCart , clearCart , handlelogout, user , toggleCartBar, cartref, removecartItem , cart, subtotal} = props;
     let pathname = usePathname()
     const [menuonoff, setmenuonoff] = useState(true)
+    const [userdrop, setuserdrop] = useState(false)
     const ref = useRef()
 
     const togglebar = () => {
@@ -26,7 +27,18 @@ const Navbar = (props) => {
     const totalQuantity = Object.values(cart).reduce((total, item) => total + item.qty, 0);
     return (
         <>
-            <div id='nav' className='p-2 sticky top-0 bg-white z-50 shadow-md'>
+            <div id='nav' className='p-2 sticky top-0 bg-white z-50  shadow-md'>
+                <div onMouseOver={()=>{setuserdrop(true)}} onMouseLeave={()=>{setuserdrop(false)}}  className="userinfo flex">
+                    {user.value&& <div className="user"><FaUserCircle onMouseOver={()=>{setuserdrop(true)}} onMouseLeave={()=>{setuserdrop(false)}}  className='text-3xl'/>
+                       {userdrop && <ul onMouseOver={()=>{setuserdrop(true)}} onMouseLeave={()=>{setuserdrop(false)}} className='shadow-md'>
+                         <Link href={'/order'}><li>My Order</li></Link>
+                         <Link href={'/myaccount'}><li>My Account</li></Link>
+                         <Link href={'/contact'}><li>Contact</li></Link>
+                         <li onClick={handlelogout}>Logout</li>
+                       </ul>}
+                    </div>}
+                    {/* {!user.value && <button className='bg-pink-500 ml-1 px-2 py-1 rounded text-white font-bold hover:bg-pink-600'>Logout</button>} */}
+                </div>
                 <div className="logo-div">
                     <Link onClick={togglebar} className='cursor-pointer' href={'/'}><Image src='/logo.png' alt='img' height={250} width={150} /></Link>
                 </div>
@@ -46,9 +58,7 @@ const Navbar = (props) => {
                         <Link onClick={togglebar} className='cursor-pointer' href={'/mugs'}><li className={pathname === '/mugs' ? 'active' : ''}>Mugs</li></Link>
                         <Link onClick={togglebar} className='cursor-pointer' href={'/stickers'}><li className={pathname === '/stickers' ? 'active' : ''}>Stickers</li></Link>
                         <Link onClick={togglebar} className='cursor-pointer' href={'/about'}><li className={pathname === '/about' ? 'active' : ''}>About</li></Link>
-                        <Link onClick={togglebar} className='cursor-pointer' href={'/contact'}><li className={pathname === '/contact' ? 'active' : ''}>Contact</li></Link>
-                        <Link onClick={togglebar} className='cursor-pointer' href={'/order'}><li className={pathname === '/order' ? 'active' : ''}>Order</li></Link>
-                        <Link onClick={togglebar} className='cursor-pointer' href={'/login'}><li className={pathname === '/login' ? 'active' : ''}>Login</li></Link>
+                        {!user.value && <Link onClick={togglebar} className='cursor-pointer' href={'/login'}><li className={pathname === '/login' ? 'active' : ''}>Login</li></Link>}
                       
                         <li>                            
                              <div className="flex flex-row" >
@@ -61,7 +71,7 @@ const Navbar = (props) => {
 
                     </ul>
                 </div>
-                <div onClick={togglebar} className='menubar'>
+                <div onClick={togglebar} className='menubar md:top-[12px] top-[16px]'>
                     {menuonoff ? <FaBars /> : <FaWindowClose />}
                 </div>
             </div>

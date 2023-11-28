@@ -1,6 +1,7 @@
 import User from '../../../models/User';
 import connectToMongo from '../../../middleware/mongoose';
 const CryptoJS = require("crypto-js");
+var jwt = require('jsonwebtoken');
 
 
 const handler = async(req , res) =>{
@@ -11,7 +12,8 @@ const handler = async(req , res) =>{
         if(ou.length !== 1){
             let user = new User({name, email, password:encryptedpass}) 
             await user.save()       
-            res.status(200).json({success:'User added', name:user.name , email:user.email, }) 
+            var token = jwt.sign({ name:user.name , email:user.email }, 'jwtsecret',  { expiresIn: '2days' });
+            res.status(200).json({success:'success', token}) 
         }        
         else{
             res.status(200).json({error:'User already exists'})

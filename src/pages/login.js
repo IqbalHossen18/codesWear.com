@@ -1,12 +1,18 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Login = () => {
   let router = useRouter()
   const [credintails, setcredintails] = useState({email:'', password:''})
   const {email, password} = credintails;
+  useEffect(() => {
+    if(localStorage.getItem('token')){
+      router.push('/')
+    }
+  }, [router])
+  
   const handlesubmit= async(e)=>{
     e.preventDefault()
     try {
@@ -26,7 +32,9 @@ const Login = () => {
         })
 
         let result = await response.json()
-        console.log({success:'success'})
+        if(result.success){
+          localStorage.setItem('token', result.token)
+        }
         router.push('/')
         setcredintails({email:'', password:''})
       }
