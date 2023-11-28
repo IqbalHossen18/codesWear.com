@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import Product from '../../../models/Product';
+import { toast  } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Slug = ({addToCart , toggleCartBar , varients, product , buyNow}) => {
   const router = useRouter()
@@ -15,9 +17,29 @@ const Slug = ({addToCart , toggleCartBar , varients, product , buyNow}) => {
       let json = await pins.json()
       if(json.includes(parseInt(pin))){
         setservice(true)
+        toast.success('yeh ! We delevered to this area', {
+          position: "bottom-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       }
       else{
         setservice(false)
+        toast.error('sorry ! We do not delevered to this area', {
+          position: "bottom-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       }
 
   }
@@ -128,11 +150,11 @@ const Slug = ({addToCart , toggleCartBar , varients, product , buyNow}) => {
                      Check Pin
                      </button>
                 </div>
-                <div className="checkpin">
+                {/* <div className="checkpin">
                     {(service === true && service !== null) &&  <p className='text-green-600 font-bold mt-3'>Yeh ! We delevered to this area.</p>}
                     {(service === false && service !== null) && <p className='text-red-600 font-bold mt-3'>Sorry ! We dont have any service for this area yet.</p>}
 
-                </div>
+                </div> */}
               </div>
           </div>
         </div>

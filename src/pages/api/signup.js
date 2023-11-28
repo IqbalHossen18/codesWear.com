@@ -8,10 +8,10 @@ const handler = async(req , res) =>{
     if(req.method==="POST"){
         const {email , name , password} = req.body;
         const encryptedpass = CryptoJS.AES.encrypt(password, 'secret123').toString()
-        let ou = await User.find({"email":email})
-        if(ou.length !== 1){
-            let user = new User({name, email, password:encryptedpass}) 
-            await user.save()       
+        let user = await User.find({"email":email})
+        if(user){
+            let newuser = new User({name, email, password:encryptedpass}) 
+            await newuser.save()       
             var token = jwt.sign({ name:user.name , email:user.email }, 'jwtsecret',  { expiresIn: '2days' });
             res.status(200).json({success:'success', token}) 
         }        

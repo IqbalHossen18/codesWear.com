@@ -1,7 +1,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Singup = () => {
   let router = useRouter()
@@ -17,16 +20,42 @@ const Singup = () => {
     e.preventDefault()
       try {
         if(name===''){
-              console.log({error:'Name cannot be blank'})
-              return
+          toast.error('Name cannot be blank', {
+            position: "top-left",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
         }
         else if(email ===''){
-          console.log({error:'Email cannot be blank'})
-          return
+         
+          toast.error('Email cannot be blank', {
+            position: "top-left",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
         }
         else if(password ===''){
-          console.log({error:'Password cannot be blank'})
-          return
+
+          toast.error('Password cannot be blank', {
+            position: "top-left",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });        
         }
      
         else{
@@ -41,12 +70,31 @@ const Singup = () => {
         // console.log(result.token)
         if(result.success){
           localStorage.setItem('token', result.token)
+          toast.success('Signed Up Successfully!', {
+            position: "top-left",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
         }
         setcredintials({name:'', email:'', password:''})
         router.push('/')
         }
       } catch (error) {
-        console.error({error:'Internal Server Error'});
+        toast.error('Internal Server Error', {
+          position: "top-left",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
       }
     }
     

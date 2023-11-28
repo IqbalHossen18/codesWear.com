@@ -5,6 +5,9 @@ import { useRef, useState } from 'react';
 import { FaWindowClose, FaBars , FaUserCircle } from "react-icons/fa";
 import { FaCirclePlus, FaCircleMinus } from "react-icons/fa6";
 import { IoBagCheckOutline , IoCartOutline  } from "react-icons/io5";
+import 'react-toastify/dist/ReactToastify.css';
+
+// import { toast } from 'react-toastify';
 
 const Navbar = (props) => {
     const {addToCart , clearCart , handlelogout, user , toggleCartBar, cartref, removecartItem , cart, subtotal} = props;
@@ -34,7 +37,19 @@ const Navbar = (props) => {
                          <Link href={'/order'}><li>My Order</li></Link>
                          <Link href={'/myaccount'}><li>My Account</li></Link>
                          <Link href={'/contact'}><li>Contact</li></Link>
-                         <li onClick={handlelogout}>Logout</li>
+                         <li onClick={()=>{
+                            //  toast.success('Logged Out Successfully', {
+                            //     position: "top-left",
+                            //     autoClose: 2000,
+                            //     hideProgressBar: false,
+                            //     closeOnClick: true,
+                            //     pauseOnHover: true,
+                            //     draggable: true,
+                            //     progress: undefined,
+                            //     theme: "light",
+                            //     });
+                                handlelogout()
+                         }}>Logout</li>
                        </ul>}
                     </div>}
                     {/* {!user.value && <button className='bg-pink-500 ml-1 px-2 py-1 rounded text-white font-bold hover:bg-pink-600'>Logout</button>} */}
