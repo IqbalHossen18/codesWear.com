@@ -51,7 +51,7 @@ const Slug = ({addToCart , toggleCartBar , varients, product , buyNow}) => {
   const [size, setsize] = useState(product.size);
   const refreshpage=(newcolor , newsize)=>{
     let url = `http://localhost:3000/product/${varients[newcolor][newsize]['slug']}`;
-    window.location = url;
+    router.push(url)
   }
 
   return (
