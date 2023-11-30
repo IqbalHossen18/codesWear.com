@@ -34,7 +34,7 @@ const Navbar = (props) => {
                 <div onMouseOver={()=>{setuserdrop(true)}} onMouseLeave={()=>{setuserdrop(false)}}  className="userinfo flex">
                     {user.value&& <div className="user"><FaUserCircle onMouseOver={()=>{setuserdrop(true)}} onMouseLeave={()=>{setuserdrop(false)}}  className='text-3xl'/>
                        {userdrop && <ul onMouseOver={()=>{setuserdrop(true)}} onMouseLeave={()=>{setuserdrop(false)}} className='shadow-md'>
-                         <Link href={'/order'}><li>My Order</li></Link>
+                         <Link href={'/orders'}><li>My Order</li></Link>
                          <Link href={'/myaccount'}><li>My Account</li></Link>
                          <Link href={'/contact'}><li>Contact</li></Link>
                          <li onClick={()=>{

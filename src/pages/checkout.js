@@ -25,9 +25,13 @@ const Checkout = ({cart , subtotal , removecartItem, addToCart}) => {
              <label htmlFor="mobile" className="leading-7 text-sm text-gray-600">Mobile</label>
               <input type="phone" id="mobile" name="mobile" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
              </div>
+             <div>
+             <label htmlFor="address" className="leading-7 text-sm text-gray-600">Address</label>
+              <input type="text" id="address" name="address" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+             </div>
             </div>
               </div>            
-            <div className="addressbox mt-5">
+            {/* <div className="addressbox mt-5">
             <h2 className='text-gray-900 text-lg mb-1 font-medium title-font'>Address</h2>
              <div className=" mb-4 flex flex-col">
               <div>
@@ -43,7 +47,7 @@ const Checkout = ({cart , subtotal , removecartItem, addToCart}) => {
               <input type="text" id="village" name="village" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
              </div>
             </div>
-            </div>
+            </div> */}
             <hr className='my-4 border-t-8 border-pink-500'/>
           </form>
           
@@ -85,7 +89,6 @@ const Checkout = ({cart , subtotal , removecartItem, addToCart}) => {
                             </Link>
                             <p className="text-xs text-gray-500 mt-3">Check your delivery details before continue</p>
                         </div>
-
                     </div>
 
                 </div>

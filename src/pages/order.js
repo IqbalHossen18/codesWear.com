@@ -9,7 +9,7 @@ const Order = () => {
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
               <p>codeswear.com</p>
-              <h1 className="text-gray-900 text-3xl title-font font-medium mb-4">{`Your Order's`}</h1>
+              <h1 className="text-gray-900 text-3xl title-font font-medium mb-4">{`My Order's`}</h1>
               <div className="flex mb-4">
                 <a className="flex-grow border-b-2 py-2 text-xl md:font-semibold text-center px-1">Product Name</a>
                 <a className="flex-grow border-b-2 border-gray-300 py-2 text-xl md:font-semibold text-center px-1">Quantity</a>
